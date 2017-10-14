@@ -49,6 +49,7 @@
 		FA95E9771F92456300F2F65F /* ARWorldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARWorldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA95E97B1F92456300F2F65F /* ARWorldUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWorldUITests.swift; sourceTree = "<group>"; };
 		FA95E97D1F92456300F2F65F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA95E9891F9250A700F2F65F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		FA95E94D1F92456300F2F65F = {
 			isa = PBXGroup;
 			children = (
+				FA95E9891F9250A700F2F65F /* README.md */,
 				FA95E9581F92456300F2F65F /* ARWorld */,
 				FA95E96F1F92456300F2F65F /* ARWorldTests */,
 				FA95E97A1F92456300F2F65F /* ARWorldUITests */,
