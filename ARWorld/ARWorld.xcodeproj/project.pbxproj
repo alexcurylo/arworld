@@ -27,6 +27,7 @@
 		FA9986181F9332D10034D4DA /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99860C1F9332D10034D4DA /* SCNVector3+Extensions.swift */; };
 		FA9986191F9332D10034D4DA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FA99860D1F9332D10034D4DA /* LICENSE */; };
 		FA99861A1F9332D10034D4DA /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = FA99860E1F9332D10034D4DA /* readme.md */; };
+		FA99861F1F9337320034D4DA /* PlaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99861E1F9337320034D4DA /* PlaceNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		FA99860D1F9332D10034D4DA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FA99860E1F9332D10034D4DA /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		FA99861D1F9336590034D4DA /* ARCL-umbrella.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARCL-umbrella.h"; sourceTree = "<group>"; };
+		FA99861E1F9337320034D4DA /* PlaceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				FA95E9591F92456300F2F65F /* AppDelegate.swift */,
 				FA95E98A1F92E92100F2F65F /* PlacesVC.swift */,
 				FA95E95D1F92456300F2F65F /* WorldVC.swift */,
+				FA99861E1F9337320034D4DA /* PlaceNode.swift */,
 				FA9985FF1F9332D10034D4DA /* ARCL */,
 				FA95E95F1F92456300F2F65F /* Main.storyboard */,
 				FA95E9621F92456300F2F65F /* Assets.xcassets */,
@@ -344,6 +347,7 @@
 				FA9986181F9332D10034D4DA /* SCNVector3+Extensions.swift in Sources */,
 				FA9986151F9332D10034D4DA /* SceneLocationEstimate.swift in Sources */,
 				FA9986101F9332D10034D4DA /* CLLocation+Extensions.swift in Sources */,
+				FA99861F1F9337320034D4DA /* PlaceNode.swift in Sources */,
 				FA95E95E1F92456300F2F65F /* WorldVC.swift in Sources */,
 				FA9986121F9332D10034D4DA /* LocationManager.swift in Sources */,
 				FA9986141F9332D10034D4DA /* SceneLocationEstimate+Extensions.swift in Sources */,
