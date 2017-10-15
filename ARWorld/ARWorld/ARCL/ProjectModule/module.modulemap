@@ -1,0 +1,6 @@
+framework module ARCL {
+  umbrella "../"
+
+  export *
+  module * { export * }
+}
