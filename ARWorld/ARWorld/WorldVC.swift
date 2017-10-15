@@ -6,77 +6,69 @@
 //  Copyright © 2017 Trollwerks Inc. All rights reserved.
 //
 
-import UIKit
-import SceneKit
+import ARCL
 import ARKit
+import CoreLocation
+import MapKit
+import SceneKit
 
-class WorldVC: UIViewController, ARSCNViewDelegate {
+final class WorldVC: UIViewController, CLLocationManagerDelegate {
 
-    var place :String!
-
-    @IBOutlet var sceneView: ARSCNView!
+    private var scene = SceneLocationView()
+    
+    lazy private var locator: CLLocationManager = { lm in
+        lm.delegate = self
+        lm.desiredAccuracy = kCLLocationAccuracyBest
+        lm.requestAlwaysAuthorization()
+        return lm
+    }(CLLocationManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Set the view's delegate
-        sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
 
-        // Run the view's session
-        sceneView.session.run(configuration)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Pause the view's session
-        sceneView.session.pause()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
+        scene.run()
+        view.addSubview(scene)
 
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
+        locator.startUpdatingLocation()
+        locate()
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scene.frame = view.bounds
     }
     
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+    private func locate() {
+        guard let here = locator.location else {
+            return
+        }
+
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = title
+        request.region = MKCoordinateRegionMakeWithDistance(here.coordinate, 5000, 5000)
+        let search = MKLocalSearch(request: request)
+
+        search.start { response, error in
+            guard let response = response,
+                  error == nil else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                response.mapItems.forEach {
+                    self.located(place: $0)
+                }
+           }
+        }
+    }
+    
+    func located(place: MKMapItem) {
+        guard let location = place.placemark.location,
+              let title = place.placemark.name else {
+            return
+        }
+        let node = PlaceNode(location: location, title: title)
+        scene.addLocationNodeWithConfirmedLocation(locationNode: node)
     }
 }
+
