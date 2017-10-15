@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WorldVC.swift
 //  ARWorld
 //
 //  Created by Alex Curylo on 10/14/17.
@@ -10,7 +10,9 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class WorldVC: UIViewController, ARSCNViewDelegate {
+
+    var place :String!
 
     @IBOutlet var sceneView: ARSCNView!
     
