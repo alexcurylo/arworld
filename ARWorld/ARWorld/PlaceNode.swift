@@ -28,21 +28,24 @@ final class PlaceNode: LocationNode {
     }
 
     private func add() {
-        let plane = SCNPlane(width: 5, height: 3)
-        plane.cornerRadius = 0.2
-        let color = UIColor(red: 0x34/0xFF, green: 0x98/0xFF, blue: 0xdb/0xFF, alpha: 1)
-        plane.firstMaterial?.diffuse.contents = color
+        let width: CGFloat = 6
+        let height: CGFloat = 3
+        let radius: CGFloat = 0.3
+
+        let plane = SCNPlane(width: width, height: height)
+        plane.cornerRadius = radius
+        plane.firstMaterial?.diffuse.contents = UIColor.purple
 
         let text = SCNText(string: title, extrusionDepth: 0)
-        text.containerFrame = CGRect(x: 0, y: 0, width: 5, height: 3)
+        text.font = UIFont.systemFont(ofSize: 1, weight: .thin)
         text.isWrapped = true
-        text.font = UIFont(name: "Futura", size: 1.0)
         text.alignmentMode = kCAAlignmentCenter
         text.truncationMode = kCATruncationMiddle
         text.firstMaterial?.diffuse.contents = UIColor.white
-        
+        text.containerFrame = CGRect(x: 0, y: 0, width: width, height: height)
+
         let textNode = SCNNode(geometry: text)
-        textNode.position = SCNVector3(0, 0, 0.2)
+        textNode.position = SCNVector3(0, 0, radius)
         textNode.center()
         
         let planeNode = SCNNode(geometry: plane)
@@ -51,9 +54,9 @@ final class PlaceNode: LocationNode {
         node.scale = SCNVector3(3,3,3)
         node.addChildNode(planeNode)
         
-        let billboardConstraint = SCNBillboardConstraint()
-        billboardConstraint.freeAxes = .Y
-        constraints = [billboardConstraint]
+        let constraint = SCNBillboardConstraint()
+        constraint.freeAxes = .Y
+        constraints = [constraint]
 
         addChildNode(node)
     }
