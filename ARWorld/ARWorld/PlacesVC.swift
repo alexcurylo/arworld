@@ -10,12 +10,14 @@ import UIKit
 
 final class PlacesVC: UITableViewController {
     
-    private let places = ["Banks",
-                          "Bars",
-                          "Coffee",
-                          "Fast Food",
+    private let places = ["ATMs",
+                          "Banks",
+                          "Coffee Shops",
                           "Gas Stations",
                           "Hospitals",
+                          "Hotels",
+                          "Movie Theaters",
+                          "Restaurants",
                           ]
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -24,7 +26,7 @@ final class PlacesVC: UITableViewController {
             return
         }
         
-        destination.place = places[selected.row]
+        destination.title = places[selected.row]
     }
 }
 
