@@ -23,10 +23,6 @@ final class PlaceNode: LocationNode {
         add()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     private func add() {
         let width: CGFloat = 6
         let height: CGFloat = 3
@@ -59,6 +55,10 @@ final class PlaceNode: LocationNode {
         constraints = [constraint]
 
         addChildNode(node)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
